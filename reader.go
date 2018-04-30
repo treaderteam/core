@@ -3,9 +3,10 @@ package reader
 import (
 	"errors"
 
+	"gitlab.com/alexnikita/treader/reader/parsers"
+
 	"gitlab.com/alexnikita/gols/epub"
 	"gitlab.com/alexnikita/treader/reader/getters"
-	"gitlab.com/alexnikita/treader/reader/parsers"
 )
 
 // Book is primary book type
@@ -14,8 +15,18 @@ type Book struct {
 	Title     string
 	Coverpage string
 	Extension string
-	parsers.SpineStack
-	entity interface{}
+	spine     parsers.SpineStack
+	entity    interface{}
+}
+
+// SpineNext alias to spine stack next
+func (b *Book) SpineNext() bool {
+	return b.spine.Next()
+}
+
+// SpineValue alias to spine value
+func (b *Book) SpineValue() string {
+	return b.spine.Value()
 }
 
 // Validate checks if file can be readed

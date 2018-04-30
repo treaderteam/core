@@ -31,7 +31,7 @@ func TestReader(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	first := book.SpineStack.Value()
+	first := book.SpineValue()
 
 	result, err := book.Get(first)
 	if err != nil {
