@@ -18,17 +18,19 @@
 
 - (instancetype)initWithRef:(id)ref;
 - (instancetype)init;
-- (NSString*)name;
-- (void)setName:(NSString*)v;
+- (NSString*)author;
+- (void)setAuthor:(NSString*)v;
+- (NSString*)title;
+- (void)setTitle:(NSString*)v;
+- (NSString*)coverpage;
+- (void)setCoverpage:(NSString*)v;
+- (BOOL)open:(NSData*)file error:(NSError**)error;
 @end
 
 FOUNDATION_EXPORT NSString* const ReaderTYPE_EPUB;
 
-// skipped function Open with unsupported parameter or return types
+FOUNDATION_EXPORT NSString* ReaderTest(void);
 
-
-FOUNDATION_EXPORT long ReaderTest(void);
-
-FOUNDATION_EXPORT BOOL ReaderValidate(NSData* file);
+FOUNDATION_EXPORT BOOL ReaderValidate(NSData* data);
 
 #endif
