@@ -1,14 +1,13 @@
 package reader
 
-const (
-	TYPE_EPUB = "epub"
-)
+import "gitlab.com/alexnikita/treader/reader/parsers"
 
 // Book is primary book type
 type Book struct {
 	Author    string
 	Title     string
 	Coverpage string
+	parsers.SpineStack
 }
 
 // Validate checks if file can be readed
@@ -21,7 +20,8 @@ func (b *Book) Open(file []byte) error {
 	return open(file, b)
 }
 
-// Test func
-func Test() string {
-	return "hello"
+// Get returns specified number of html elements
+// from book with boundaries
+func (b *Book) Get(count, from int) (result string, err error) {
+	return
 }

@@ -14,9 +14,10 @@ func parseEpub(data []byte) (result Book, err error) {
 	}
 
 	result = Book{
-		Author:    book.Author,
-		Title:     book.Title,
-		Coverpage: book.Coverpage,
+		Author:     book.Author,
+		Title:      book.Title,
+		Coverpage:  book.Coverpage,
+		SpineStack: book.SpineStack,
 	}
 
 	return result, nil

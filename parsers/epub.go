@@ -88,6 +88,8 @@ func parseEPUBFromReader(rdr io.Reader) (book *epub.Book, err error) {
 		return
 	}
 
+	defer file.Close()
+
 	if _, err = io.Copy(file, rdr); err != nil {
 		return
 	}
@@ -96,7 +98,6 @@ func parseEPUBFromReader(rdr io.Reader) (book *epub.Book, err error) {
 		return
 	}
 
-	file.Close()
 	os.Remove(tmpFilename)
 
 	return
