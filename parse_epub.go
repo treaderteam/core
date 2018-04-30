@@ -8,7 +8,7 @@ import (
 
 func parseEpub(data []byte) (result Book, err error) {
 
-	book, err := parsers.GetEPUBInfo(bytes.NewReader(data))
+	book, entity, err := parsers.GetEPUBInfo(bytes.NewReader(data))
 	if err != nil {
 		return result, err
 	}
@@ -18,6 +18,8 @@ func parseEpub(data []byte) (result Book, err error) {
 		Title:      book.Title,
 		Coverpage:  book.Coverpage,
 		SpineStack: book.SpineStack,
+		Extension:  book.Extension,
+		entity:     entity,
 	}
 
 	return result, nil

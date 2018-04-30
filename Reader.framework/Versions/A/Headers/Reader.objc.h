@@ -24,9 +24,11 @@
 - (void)setTitle:(NSString*)v;
 - (NSString*)coverpage;
 - (void)setCoverpage:(NSString*)v;
+- (NSString*)extension;
+- (void)setExtension:(NSString*)v;
 // skipped field Book.SpineStack with unsupported type: gitlab.com/alexnikita/treader/reader/parsers.SpineStack
 
-- (NSString*)get:(long)count from:(long)from error:(NSError**)error;
+- (NSData*)get:(NSString*)href error:(NSError**)error;
 - (BOOL)next;
 - (BOOL)open:(NSData*)file error:(NSError**)error;
 - (NSString*)value;

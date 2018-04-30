@@ -1,13 +1,21 @@
 package reader
 
-import "gitlab.com/alexnikita/treader/reader/parsers"
+import (
+	"errors"
+
+	"gitlab.com/alexnikita/gols/epub"
+	"gitlab.com/alexnikita/treader/reader/getters"
+	"gitlab.com/alexnikita/treader/reader/parsers"
+)
 
 // Book is primary book type
 type Book struct {
 	Author    string
 	Title     string
 	Coverpage string
+	Extension string
 	parsers.SpineStack
+	entity interface{}
 }
 
 // Validate checks if file can be readed
@@ -20,8 +28,13 @@ func (b *Book) Open(file []byte) error {
 	return open(file, b)
 }
 
-// Get returns specified number of html elements
-// from book with boundaries
-func (b *Book) Get(count, from int) (result string, err error) {
-	return
+// Get returns specified file from book
+func (b *Book) Get(href string) (result []byte, err error) {
+	switch b.Extension {
+	case "epub":
+		book := b.entity.(*epub.Book)
+		return getters.GetByHref(book, href)
+	default:
+		return nil, errors.New("unsupported type of  book to get")
+	}
 }

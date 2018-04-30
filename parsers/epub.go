@@ -13,8 +13,8 @@ import (
 )
 
 // GetEPUBInfo implementation
-func getEPUBInfo(rdr io.Reader) (result BasicBookInfo, err error) {
-	book, err := parseEPUBFromReader(rdr)
+func getEPUBInfo(rdr io.Reader) (result BasicBookInfo, book *epub.Book, err error) {
+	book, err = parseEPUBFromReader(rdr)
 	if err != nil {
 		return
 	}
@@ -66,12 +66,27 @@ func getEPUBInfo(rdr io.Reader) (result BasicBookInfo, err error) {
 		words = make(map[string]string)
 	}
 
+	hrefs := make([]string, 0)
+
+	for _, v := range book.Opf.Spine.Items {
+		ref := v.IDref
+		for _, j := range book.Opf.Manifest {
+			if j.ID == ref {
+				hrefs = append(hrefs, j.Href)
+				break
+			}
+		}
+	}
+
+	spin := NewSpineStack(hrefs)
+
 	result = BasicBookInfo{
-		Author:    author,
-		Title:     title,
-		Coverpage: coverpage,
-		Words:     words,
-		Extension: "epub",
+		Author:     author,
+		Title:      title,
+		Coverpage:  coverpage,
+		Words:      words,
+		Extension:  "epub",
+		SpineStack: *spin,
 	}
 
 	return
