@@ -46,6 +46,6 @@ func (b *Book) Get(href string) (result []byte, err error) {
 		book := b.entity.(*epub.Book)
 		return getters.GetByHref(book, href)
 	default:
-		return nil, errors.New("unsupported type of  book to get")
+		return nil, errors.New("unsupported type of book to get")
 	}
 }
