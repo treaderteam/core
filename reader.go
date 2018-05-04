@@ -15,6 +15,7 @@ type Book struct {
 	Title     string
 	Coverpage string
 	Extension string
+	Hash      string
 	spine     parsers.SpineStack
 	entity    interface{}
 }

@@ -3,10 +3,16 @@ package reader
 import (
 	"bytes"
 
+	"gitlab.com/alexnikita/gols/util"
 	"gitlab.com/alexnikita/treader/reader/parsers"
 )
 
 func parseEpub(data []byte) (result Book, err error) {
+
+	hash, err := util.Hash(data)
+	if err != nil {
+		return Book{}, err
+	}
 
 	book, entity, err := parsers.GetEPUBInfo(bytes.NewReader(data))
 	if err != nil {
@@ -20,6 +26,7 @@ func parseEpub(data []byte) (result Book, err error) {
 		Extension: book.Extension,
 		entity:    entity,
 		spine:     book.SpineStack,
+		Hash:      hash,
 	}
 
 	return result, nil

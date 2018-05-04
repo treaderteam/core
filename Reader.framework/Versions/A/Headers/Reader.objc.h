@@ -26,6 +26,8 @@
 - (void)setCoverpage:(NSString*)v;
 - (NSString*)extension;
 - (void)setExtension:(NSString*)v;
+- (NSString*)hash;
+- (void)setHash:(NSString*)v;
 - (NSData*)get:(NSString*)href error:(NSError**)error;
 - (BOOL)open:(NSData*)file error:(NSError**)error;
 - (BOOL)spineNext;
