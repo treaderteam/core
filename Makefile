@@ -1,7 +1,7 @@
 IOS_TREADER_PATH ?= gitlab.com/alexnikita/treader/reader
 
 build-ios:
-	gomobile bind -target=ios $(IOS_TREADER_PATH)
+	gomobile bind -target=ios -o $(IOS_TREADER_PATH)
 
 install-deps:
 	go get -d gitlab.com/alexnikita/gols/... && \
