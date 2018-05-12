@@ -1,4 +1,4 @@
-IOS_TREADER_PATH ?= gitlab.com/alexnikita/treader/reader
+IOS_TREADER_PATH ?= gitlab.com/alexnikita/treader/reader/Reader.framework
 
 build-ios:
 	gomobile bind -target=ios -o $(IOS_TREADER_PATH)
@@ -29,4 +29,4 @@ getremote:
 	curl -X GET http://188.166.94.143:8100/get >> 2.tar.gz
 
 clean:
-	rm *.zip
+	rm *.gz
