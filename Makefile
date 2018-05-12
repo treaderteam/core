@@ -1,7 +1,7 @@
 IOS_TREADER_PATH ?= gitlab.com/alexnikita/treader/reader/Reader.framework
 
 build-ios:
-	gomobile bind -target=ios -o $(IOS_TREADER_PATH)
+	gomobile bind -target=ios
 
 get-ios:
 	make saveremote && make untarize && make clean
