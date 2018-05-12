@@ -20,7 +20,7 @@ tarize:
 	tar -czvf 1.tar.gz Reader.framework
 
 untarize:
-	tar -xzvf 2.tar.gz -C $(IOS_TREADER_PATH)
+	tar -xzvf 2.tar.gz
 
 saveremote:
 	curl -X POST --data-binary @1.tar.gz http://188.166.94.143:8100/save
