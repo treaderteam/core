@@ -4,7 +4,7 @@ build-ios:
 	gomobile bind -target=ios
 
 get-ios:
-	make saveremote && make untarize && make clean
+	make getremote && make untarize && make clean
 
 save-ios:
 	make build-ios && make tarize && make saveremote && make clean
