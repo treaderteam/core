@@ -1,8 +1,0 @@
-framework module "Reader" {
-	header "ref.h"
-    header "Reader.objc.h"
-    header "universe.objc.h"
-    header "Reader.h"
-
-    export *
-}
